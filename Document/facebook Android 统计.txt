@@ -1,0 +1,26 @@
+
+
+1. 到facebook网站下载sdk
+	. 如果是eclipse工程，则不能使用最新版本sdk---facebook支持eclipse工程到v3.23为止.
+	. 如果是android studio工程则可以使用最新版本。	
+
+2. 申请application id . 添加到menifest
+        <meta-data android:name="com.facebook.sdk.ApplicationId" 
+            android:value="@string/facebook_id"/>
+
+3. 在代码中添加调用。
+		@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+			
+		AppEventsLogger.activateApp(this);
+	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		
+		AppEventsLogger.deactivateApp(this);
+	}

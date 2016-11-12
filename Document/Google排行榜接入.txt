@@ -1,0 +1,44 @@
+Google rank接入
+1：拷贝BaseGameActivity.java到项目，用MainActivity继承BaseGameActivity
+   （如果MainActivity已经继承了别的父类， 请用BaseGameActivity去继承此父类，
+   然后再将MainActivity继承BaseGameActivity，BaseGameActivity.java在Common_magic_xxx.zip里）
+	如：public abstract class BaseGameActivity extends Cocos2dxActivity implements GameHelperListener 
+	    public class AppActivity extends BaseGameActivity
+
+
+2：在AndroidManifest.xml里添加
+<meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/app_id" />
+
+//下面两个权限不一定非得要，待测，
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />  
+<uses-permission android:name="android.permission.USE_CREDENTIALS" />  
+
+3：调用
+
+//提交数量，id是排行榜id， score是对应的数量
+public void submitScore_(String id, int score) {
+	if(isSignedIn()){
+		STComm.debugLog("submitScore_,has sign in, boardId:" + id + ",num:" + Integer.toString(score));
+		Games.Leaderboards.submitScore(getApiClient(),id, score);
+	}
+}
+
+//展示榜单
+public void googleRank_() {
+	int re = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(sActivity);
+	//Log.d("isGooglePlayServicesAvailable","re:" + re);
+	
+	//判断是否有Google服务，防止闪退
+	if( re != ConnectionResult.SUCCESS)
+	{
+		return;
+	}
+	
+	if (isSignedIn()) {
+		startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),RC_UNUSED);
+	} else {
+		beginUserInitiatedSignIn();
+	}
+}
+
+注意：android:launchMode="singleTask" 可以， 不能配置为android:launchMode="singleInstance"

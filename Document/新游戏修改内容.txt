@@ -1,0 +1,40 @@
+***替换测试id***
+测试包名：
+测试umeng id：
+测试Google id：
+测试Facebook id：
+测试kochava id：
+
+1：umeng id
+2；Google id（不能为空）和排行榜id
+3：Facebook id（如果有）
+4：kochava id
+5：rate地址
+6：contact邮箱地址、标题
+7：*****包名、版本号、签名（必须修改ant.properties里的签名信息）
+8：换皮混淆（包名路径修改，混淆代码）（修改ClientAndroid.cpp里的内容， java代码， AndroidManifest）
+	1：c++修改（ClientAndroid.cpp、STMacro.h）
+	2：org/cocos2dx/cpp下的java代码
+	3：AndroidManifest.xml（除包名外还有两处）
+
+9：umeng后台修改
+	1：自定义事件
+	2：关卡ID
+	3：在线参数
+
+10：修改ant.properties里的签名信息
+11：对战版OpenSSL版本
+12：打乱每日挑战牌局的顺序
+13：推送三天不上线的key值有错
+14：dev广告按钮横屏时切换左右手的bug
+15：**修改文件名、修改代码内文件名、修改类名
+16：**修改文件名时，请修改plist里对应的文件名（收牌效果）
+17：对战版服务器地址修改
+18：公司的logo图标替换
+19：广告插件jar包删除恢复， 项目依赖
+	Facebook投放
+	unity广告依赖
+	Facebook广告依赖
+	adsdk去除（去除代码， 5行）
+20：默认汉语（简体还是繁体）
+21：app_name自动翻译

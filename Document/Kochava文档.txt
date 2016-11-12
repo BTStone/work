@@ -1,0 +1,19 @@
+1：onCreate初始化
+	Feature kTracker = new Feature( this, "kosolitaire-appgo-yddf4t");//双引号里是你的Kochava id
+	ps：import com.kochava.android.tracker.Feature;（将KochavaSDK.jar放lib下）
+2：manifest配置
+	拥有<uses-permission android:name ="android.permission.INTERNET"/>
+	    <uses-permission android:name ="android.permission.ACCESS_NETWORK_STATE"/>
+	
+	 
+
+	 <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+	 <receiver android:name ="com.kochava.android.tracker.ReferralCapture"
+	 			  android:exported ="true" >
+			<intent-filter>
+				<action android:name ="com.android.vending.INSTALL_REFERRER" />
+			</intent-filter>
+	 </receiver> 

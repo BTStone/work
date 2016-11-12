@@ -1,0 +1,1 @@
+in_app_opts	{server_time=1},{server_addr=http://aws.pvp.monthurs.com/time.php},{winning_rate=50}	服务器时间开关：0-本地，1-服务器；服务器地址；New Game的活局比例

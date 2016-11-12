@@ -1,0 +1,11 @@
+1：rate的url，contact us的email地址，主题包跳转的下载地址
+4：版本号，包名，签名
+5：STComm去掉debug
+6：去除每次进入游戏都上锁
+7：umeng debug模式关闭
+
+3：字节对齐
+
+12：新游戏的Facebook、Google、umeng、kochava的ID检查
+13：对战版服务器地址修改
+

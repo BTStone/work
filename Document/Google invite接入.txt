@@ -1,0 +1,44 @@
+Google Invite接入
+
+private static int RESPONSE_INVITE = 987412024;
+private static int REQUEST_INVITE = 987412023;
+private static int REQUEST_NOTICE = 987412022; 
+private static String appInviteKey = "solitaireAppInvite";
+
+public static void googleInvite() {
+	String title = "Message";
+	String message = "Your friend sent a Windows 10 theme to you.";
+	String act = "Invite act";
+	STComm.debugLog("javagoogleInvite");
+	 Intent intent = new AppInviteInvitation.IntentBuilder(title)
+	.setMessage(message)
+//	        .setCustomImage(Uri.parse("https://lh3.googleusercontent.com/EbMsVqe3zOnAFJYsHHQi-CDQXvt5oZstkUGa4i4liRGKmeXwHXEboAJVRHATUXv8J8kb=w300-rw"))
+//	        .setCallToActionText(act)
+	.build();
+	intent.putExtra(appInviteKey, 1);
+	int re = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(sActivity);
+	//Log.d("isGooglePlayServicesAvailable","re:" + re);
+
+	if( re == ConnectionResult.SUCCESS)
+	{
+		sActivity.startActivityForResult(intent, REQUEST_INVITE);
+	}
+}
+	
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_INVITE) {
+	if (resultCode == RESULT_OK) {
+	    // Get the invitation IDs of all sent messages
+	    
+	    String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
+	    for (String id : ids) {
+		//Log.d("appActivity" , "onActivityResult: sent invitation " + id);
+	    }
+	} else {
+	    // Sending failed or it was canceled, show failure message to the user
+	    // ...
+	}
+    }
+}

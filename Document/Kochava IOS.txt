@@ -1,0 +1,18 @@
+1：下载Kochava IOS sdk， 解压后有libTrackAndAd.a和TrackAndAd.h两个文件， 将两文件拖入工程
+2：添加以下framework
+	UIKit.framework
+	Foundation.framework
+	AdSupport.framework
+	iAd.framework
+	CoreLocation.framework
+	SystemConfiguration.framework
+	libTrackAndAd.a
+3：在didFinishLaunchingWithOptions初始化（代码放在“self.window.rootViewController = self.viewController;”之前）
+	#import "TrackAndAd.h"
+
+	NSDictionary *initDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @"myKochavaAppGUID", @"kochavaAppId", nil];
+       KochavaTracker *kochavaTracker = [[KochavaTracker alloc]initKochavaWithParams:initDict];
+
+ 
+

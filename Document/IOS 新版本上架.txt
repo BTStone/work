@@ -1,0 +1,13 @@
+1:umeng id ， umeng chanelId替换
+2:广告key
+3：包名、签名、版本号、apple id
+4：contact us邮箱地址、标题
+5：umeng后台修改
+	1：自定义事件
+	2：关卡ID
+	3：在线参数
+6：Facebook id
+7：Kochava id
+8：rate 
+
+
